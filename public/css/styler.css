@@ -1,0 +1,125 @@
+/* 
+
+Content
+
+    1. CSS Imports
+    2. General Styles
+    3. Sidebar
+    4. Content
+    5. Preferences form
+    6. Sign in form
+    7. tables.html
+    8. Bootstrap overrides
+    9. Maps
+    10. Media Queries
+	
+--------------------------------------- */
+
+/* 1. CSS Imports
+--------------------------------------- */
+@import url('http://fonts.googleapis.com/css?family=Open Sans:300,400,700');
+@import url(bootstrap-icons.css);
+@import url(bootstrap.min.css);
+
+/* 2. General Styles
+--------------------------------------- */
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 3. Sidebar
+------------------------------------------------------*/
+.left-sidebar {
+    width: 280px;
+    height: 100vh;
+    float: left;
+    background-color: rgb(22, 21, 26);
+    padding: 0;
+}
+
+.menu {    
+    padding-bottom: 15px;
+}
+.left-sidebar .menu>li a i {
+    font-size: 16px;
+    display: inline-block;
+    padding-right: 0.8em;
+    text-align: center;
+}
+
+.left-sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.left-sidebar .menu>li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0px;
+}
+
+.left-sidebar .menu>li>a {
+    display: block;
+    position: relative;
+    margin: 0;
+    border: 0px;
+    padding: 20px 20px 0 30px;
+    text-decoration: none;
+}
+
+.left-sidebar a,
+.left-sidebar a i {
+    color: rgb(192, 192, 192);
+    font-size: 15px;
+    font-weight: 400;
+    transition: 0.5s;
+}
+
+.left-sidebar a:hover i,
+.left-sidebar li.active>a i {
+    color: #0bdae2
+}
+
+.left-sidebar a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.left-sidebar li.has-sub .submenu {
+    display: none;
+}
+
+.left-sidebar li.has-sub.open .submenu {
+    display: block;
+}
+
+.left-sidebar .submenu {
+    background-color: rgb(34, 34, 39);
+    padding-bottom: 15px;
+    margin-top: 20px;
+}
+
+.submenu>li>a {
+    display: block;
+    padding: 15px 5px 0px 10px;
+    margin: 0;
+    transition: 0.5s;
+}
+
+/* 4. Content
+------------------------------------------------------*/
+.right-content {
+    width: calc(100% - 280px);
+    height: 100vh;
+    background-color: #333333;
+    overflow-y: auto;
+}
