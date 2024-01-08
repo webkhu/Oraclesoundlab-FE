@@ -10,6 +10,7 @@ class Home extends Controller
     use Template;
     public function index()
     {
+        // dd(collect($this->Template()['pages'])->flatten()->where('id',7));
         return view('index', $this->Template());
     }
 }

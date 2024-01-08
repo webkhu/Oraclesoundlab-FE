@@ -7,29 +7,43 @@
     <title>Oracle Sound Lab</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width">
-    <link type="text/css" rel="stylesheet" href="{!! url('/icon/bootstrap-icons.css') !!}">    
-    <link type="text/css" rel="stylesheet" href="{!! url('/css/bootstrap.css') !!}">
+    <meta name="viewport" content="width=device-width"> 
     <link rel="stylesheet" href="{!! url('/css/styler.css') !!}">
 </head>
 
 <body>
     <div class="left-sidebar">
+        <div class="logo"><img id="logo" src="{{ $url }}//template/oraclesoundlab_logo.gif"></div>
         <!-- Navbar -->
-        <ul class="menu">
-            <li class="active"><a href="#"><i class="bi bi-house-fill"></i>Home</a></li>
-            <li class="has-sub open">
-                <a href="javascript:;">
-                    <i class="bi bi-people-fill"></i>Artists<div class="pull-right"><span class="caret"></span></div>
-                </a>
-                <ul class="submenu">
-                    <li><a href="#"><i class="bi bi-dot"></i>Service 1</a></li>
-                    <li><a href="#"><i class="bi bi-dot"></i>Service 2</a></li>
-                    <li><a href="#"><i class="bi bi-dot"></i>Service 3</a></li>
-                </ul>
-            </li>
-            <li><a href="#"><i class="bi bi-person-lines-fill"></i>Contact</a></li>
-        </ul>
+        <div class="menu-area">
+            <ul class="menu">
+                @foreach($pages as $page)
+                    @php 
+                    if($active === $page->name){
+                        $cl = 'active';
+                    } else {
+                        $cl ='';
+                    }
+                    @endphp
+                    @if (collect($subpages)->flatten()->where('parent_id', $page->id)->last())                
+                        <li class="has-sub {{ $cl }}">
+                            <a href="javascript:;">
+                                @if(isset($page->icon))<i class="{{ $page->icon }}"></i>@endif {{ $page->link }}<div class="float-end"><i class="bi bi-caret-down-fill" style="font-size: 0.7em"></i></div>
+                            </a>
+                            <ul class="submenu">
+                                @foreach($subpages as $subpage)
+                                <li><a href="{{ $url }}/{{ $subpage->name }}"><i class="bi bi-dot"></i>{{ $subpage->link }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @else                
+                        <li class= {{ $cl }}><a href="{{ $url }}/{{ $page->name }}">
+                            @if(isset($page->icon))<i class="{{ $page->icon }}"></i>@endif{{ $page->link }}</a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+        </div>
     </div>
     <div class="right-content">
         @yield('content')
