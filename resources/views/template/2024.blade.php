@@ -12,9 +12,29 @@
 </head>
 
 <body>
-    <div class="left-sidebar">
+    {{-- Header Bar --}}
+    <div class="header" role="navigation">
+        <div class="navbar-header">
+            <!-- Search Bar -->
+            <form>
+                <div class="input-group input-group-sm search">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                    <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+            <!-- Colapse Menu -->
+            <div class="close-toggler" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
+    </div>
+    {{-- Sidebar --}}
+    <div class="sidebar" id="sidebar">
+        {{-- logo --}}
         <div class="logo"><img id="logo" src="{{ $url }}//template/oraclesoundlab_logo.gif"></div>
-        <!-- Navbar -->
+        {{-- Menu Area--}}
         <div class="menu-area">
             <ul class="menu">
                 @foreach($pages as $page)
@@ -32,7 +52,7 @@
                             </a>
                             <ul class="submenu">
                                 @foreach($subpages as $subpage)
-                                <li><a href="{{ $url }}/{{ $subpage->name }}"><i class="bi bi-dot"></i>{{ $subpage->link }}</a></li>
+                                <li><a href="{{ $url }}/{{ $subpage->name }}"><i class="bi bi-dash"></i>{{ $subpage->link }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -45,15 +65,16 @@
             </ul>
         </div>
     </div>
-    <div class="right-content">
+    {{-- Content Area --}}
+    <div class="right-content">        
+        {{-- Page Content --}}
         @yield('content')
     </div>
     <script src="{!! url('/js/bootstrap.bundle.js') !!}"></script>
     <script src="{!! url('/js/jquery.min.js') !!}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            // Sidebar menu 
-            $('.left-sidebar li.has-sub a').click(function () {
+            $('.sidebar li.has-sub a').click(function () {
                 if ($(this).parent().hasClass('open')) {
                     $(this).parent().removeClass('open');
                 } else {
@@ -61,6 +82,11 @@
                 }
             });
         });
+        
+        function myFunction(x) {
+            x.classList.toggle("change");
+            document.getElementById('sidebar').classList.toggle('hide');
+        }
     </script>
 </body>
 
