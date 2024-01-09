@@ -14,19 +14,49 @@
 <body>
     {{-- Header Bar --}}
     <div class="header" role="navigation">
-        <div class="navbar-header">
+        <div class="header-nav">
+            <div class="header-box header-box-sm">
+                <img class="header-logo" src="{{ $url }}//template/oraclesoundlab_logo.gif">
+            </div>      
             <!-- Search Bar -->
-            <form>
-                <div class="input-group input-group-sm search">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
-                    <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+            <div class="header-box header-box-bg">
+                <div class="me-4"><a href="#">Our Profile</a></div>
+                <div class="me-4"><a href="#">Contact Us</a></div>
+                <form class="ms-4">
+                    <div class="input-group input-group-sm search">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                        <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    </div>
+                </form>
+            </div>
+                <form class="header-box header-search-sm" id="search-sm">
+                    <div class="input-group input-group-sm search-sm">
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                        <button class="btn btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></button>
+                    </div>
+                    <div class="ms-2">
+                        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openSearch()"><i class="bi bi-x-lg"></i></button>
+                    </div>  
+                </form>
+            <div class="header-box header-box-sm">
+                {{-- Icon About --}}
+                <div class="me-3">
+                    <button class="btn btn-sm btn-secondary" type="button"><i class="bi bi-tag-fill"></i></button>
                 </div>
-            </form>
-            <!-- Colapse Menu -->
-            <div class="close-toggler" onclick="myFunction(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
+                {{-- Icon Contact --}}
+                <div class="me-3">
+                    <button class="btn btn-sm btn-secondary" type="button"><i class="bi bi-telephone-outbound-fill"></i></button>
+                </div> 
+                {{-- Icon Search --}}
+                <div class="me-4">
+                    <button class="btn btn-sm btn-secondary" type="button" onclick="openSearch()"><i class="bi bi-search"></i></button>
+                </div>            
+                <!-- Colapse Menu -->
+                <div class="close-toggler" onclick="myFunction(this)" id="close-toggle">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,6 +116,13 @@
         function myFunction(x) {
             x.classList.toggle("change");
             document.getElementById('sidebar').classList.toggle('hide');
+        }
+        function openSearch() {
+            document.getElementById('search-sm').classList.toggle('show');
+            if (document.getElementById('sidebar').classList.contains('hide')) {
+                document.getElementById('sidebar').classList.toggle('hide');
+                document.getElementById('close-toggle').classList.toggle("change");
+            }
         }
     </script>
 </body>
