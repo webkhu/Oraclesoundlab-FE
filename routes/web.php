@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Home;
+use App\Http\Controllers\Artists;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/artists', [Artists::class, 'index']);
+Route::get('/artists/{slug}', [Artists::class, 'artist']);
 Route::get('/', [Home::class, 'index']);

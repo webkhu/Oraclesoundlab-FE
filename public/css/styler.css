@@ -19,7 +19,7 @@ Content
 --------------------------------------- */
 
 /* @import url('http://fonts.googleapis.com/css?family=Open Sans:300,400,700'); */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Inter:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap");
 @import url(../icon/bootstrap-icons.css);
 @import url(bootstrap.css);
 
@@ -27,7 +27,7 @@ Content
 --------------------------------------- */
 
 * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', 'Open Sans', sans-serif;
     margin: 0;
 }
 
@@ -37,6 +37,16 @@ body {
     background-color: #16151a;
     width: 100%;
     /* overflow: hidden; */
+}
+
+img {
+    border-radius: 5px;
+}
+
+hr {
+    background-color: rgb(34, 34, 39);
+    border: 1px solid rgb(34, 34, 39);
+    height: 1px;
 }
 
 /* --------------- Fonts --------------- */
@@ -50,14 +60,31 @@ body a i {
     text-decoration: none;
 }
 
+body a:hover i,
 body a:hover {
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
 
-body a:hover i,
+body li.active>a,
 body li.active>a i {
-    color: #0bdae2
+    color: rgb(30, 255, 255);
+}
+
+h1 {
+    font-size: 2.2em;
+    font-weight: 500;
+    color: rgb(230, 230, 230);
+}
+
+h2 {    
+    font-size: 1.2em;
+}
+
+h3 {
+    color: rgb(225, 225, 225);    
+    font-size: 1.6em;
+    font-weight: 500;
 }
 
 #logo {
@@ -108,6 +135,7 @@ body li.active>a i {
 .header {
     display: block;
     position: fixed;
+    background-color: #16151a;
     top: 0;
     left: 0;
     right: 0;
@@ -277,9 +305,78 @@ body li.active>a i {
     background-color: rgb(34, 34, 39);
 }
 
+/* 5. Artist
+------------------------------------------------------*/
+.imgborder {
+    border: 1px solid rgb(34, 34, 39);
+    border-radius: 5px;
+    box-shadow: 0px 2px 2px -1px rgb(30, 255, 255);
+    cursor: pointer;
+    transition: box-shadow 350ms, border 350ms, color 350ms, box-shadow 350ms;
+}
+
+.imggalbox {
+    /* border: 10px solid rgb(34, 34, 39, 0); */
+    background-color: rgb(34, 34, 39, 0);
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 350ms;
+}
+
+.img-setup {
+    color: #fff;
+    font-weight: 400;
+}
+
+.bg-img-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.bg-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 5px;
+}
+
+.imgborder:hover {
+    border: 1px solid rgb(30, 255, 255);
+    box-shadow: none;
+    color: rgb(30, 255, 255);
+}
+
+.imgborder:hover .bg-img {
+    transform: scale(1.1);
+}
+
+.imgborder:hover .imggalbox {
+    background-color: rgb(34, 34, 39);
+    /* border: 10px solid #6c757d; */
+}
+
+.artist-detail {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.artist-img {
+    flex: 1;
+    max-width: 260px;
+    margin-right: 25px;
+}
+
+.artist-desc {
+    flex: 1;
+    width: auto;
+    text-align: justify;
+}
+
 /* 10. Media Queries
 ------------------------------------------------------*/
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1129px) {
     .header {
         position: relative;
         padding-left: 310px;
@@ -299,12 +396,12 @@ body li.active>a i {
     }
 
     .right-content {
-        padding: 0 20px 15px 310px;
-        margin-top: 0;
+        padding: 20px 20px 20px 310px;
+        margin-top: 0px;
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1128px) {
     .header {
         position: fixed;
         padding-left: 20px;
@@ -337,7 +434,7 @@ body li.active>a i {
         background-color: #16151a;
         z-index: 1;
         padding: 0 20px;
-        transition: transform 0.5s ease;    
+        transition: transform 0.5s ease;
         transform: translateX(+100%);
     }
 
@@ -346,8 +443,8 @@ body li.active>a i {
     }
 
     .right-content {
-        padding: 0 20px 15px 20px;
-        margin-top: 0;
+        padding: 20px 20px;
+        margin-top: 70px;
     }
 
     .sidebar {
@@ -357,8 +454,40 @@ body li.active>a i {
     .hide {
         transform: translateX(0);
     }
+
     .show {
         transform: translateX(0);
     }
 
+}
+
+@media screen and (max-width: 1000px) {
+    .artist-img {
+        max-width: 240px;
+        min-width: 200px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .artist-img {
+        max-width: 200px;
+        min-width: 200px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .artist-detail {
+        display: block;
+        text-align: center;
+    }
+
+    .artist-img {
+        display: inline-block;
+        max-width: 250px;
+        margin-bottom: 20px;
+    }
+
+    .artist-desc {
+        width: auto;
+    }
 }
