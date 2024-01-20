@@ -76,11 +76,11 @@
     {{-- Sidebar --}}
     <div class="sidebar" id="sidebar">
         {{-- logo --}}
-        <div class="logo"><img id="logo" src="{{ $url }}//template/oraclesoundlab_logo.gif"></div>
+        <div class="logo"><img id="logo" src="{{ $url }}/template/oraclesoundlab_logo.gif"></div>
         {{-- Menu Area --}}
         <div class="menu-area">
             <ul class="menu">
-                @foreach ($pages as $page)
+                @foreach (collect($pages)->where('icon', true) as $page)
                     @php
                         if ($active === strtolower($page->link)) {
                             $cl = 'active';
@@ -117,9 +117,71 @@
         </div>
     </div>
     {{-- Content Area --}}
-    <div class="right-content">
-        {{-- Page Content --}}
-        @yield('content')
+    <div class="right-area">
+        <div class="content">
+            {{-- Breadcrumb --}}
+            @if ($active !== 'index')
+                <div class="mb-5 breadcrumb"><a href="{{ $url }}">Home</a>
+                    @php
+                        $x = 10;
+                        $breadUrl = '';
+                        for ($n = 1; $n < $x; $n++) {
+                            $breadCrumb = 'crumb' . $n;
+                            if (isset($$breadCrumb)) {
+                                $childUrl = $breadUrl . '/' . Str::lower($$breadCrumb);
+                                echo ' <i class="bi bi-chevron-right breadcrumb-arrow"></i> <a href="' . $url . $childUrl . '">' . $$breadCrumb . '</a>';
+                                $breadUrl = $childUrl;
+                            } else {
+                                $x = 0;
+                            }
+                        }
+                    @endphp
+                </div>
+            @endif
+            {{-- Page Content --}}
+            @yield('content')
+        </div>
+        {{-- Footer Area  --}}
+        <div class="footer-area">
+            <div class="row justify-content-between">
+                <div class="col-auto row justify-content-between foot-order2">
+                    @foreach ($categories as $category)
+                        <div class="col" style="min-width:200px;">
+                            <div class="bold mb-2">{{ $category->name }}</div>
+                            @foreach (collect($pages)->where('category_id', $category->id) as $page)
+                                <div><a
+                                        href="{{ $url }}/{{ Str::lower($page->link) }}">{{ $page->link }}</a>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col foot-order1">
+                    <div class="mb-2 footer-logo text-color bold">Oracle Sound Lab</div>
+                    <div class="mb-2">Record Label &amp; Internet Radio,<br> Online music HTML Template.</div>
+                    <div class="">
+                        <i class="bi bi-envelope text-color me-1"></i> <a href="mailto:support@oraclesoundlab.com">
+                            support@oraclesoundlab.com</a>
+                        <br>
+                        <i class="bi bi-telephone text-color me-1"></i> <a href="tel:82345678900">
+                            +62-8080-808-808</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-auto row justify-content-between foot-order2" style="font-size: 1.2em;">
+                    <div class="col"><i class="bi bi-facebook"></i></div>
+                    <div class="col"><i class="bi bi-instagram"></i></div>
+                    <div class="col"><i class="bi bi-twitter"></i></div>
+                    <div class="col"><i class="bi bi-tiktok"></i></div>
+                    <div class="col"><i class="bi bi-spotify"></i></div>
+                    <div class="col"><i class="bi bi-youtube"></i></div>
+                </div>
+                <div class="col align-self-center foot-order1">Copyright © {{ date('Y') }}. Oracle Sound Lab All
+                    rights reserved.</div>
+            </div>
+        </div>
     </div>
     <script src="{!! url('/js/bootstrap.bundle.js') !!}"></script>
     <script src="{!! url('/js/jquery.min.js') !!}"></script>

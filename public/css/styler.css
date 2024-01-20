@@ -16,7 +16,7 @@ Content
 --------------------------------------- */
 
 /* 1. CSS Imports
---------------------------------------- */
+-------------------------------------------------------------------------------------------------*/
 
 /* @import url('http://fonts.googleapis.com/css?family=Open Sans:300,400,700'); */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap");
@@ -24,7 +24,7 @@ Content
 @import url(bootstrap.css);
 
 /* 2. General Styles
---------------------------------------- */
+-------------------------------------------------------------------------------------------------*/
 
 * {
     font-family: 'Inter', 'Open Sans', sans-serif;
@@ -44,8 +44,8 @@ img {
 }
 
 hr {
-    background-color: rgb(34, 34, 39);
-    border: 1px solid rgb(34, 34, 39);
+    background-color: rgb(180, 180, 180);
+    border: none;
     height: 1px;
 }
 
@@ -54,7 +54,7 @@ body,
 body a,
 body a i {
     color: rgb(180, 180, 180);
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 400;
     transition: 0.5s;
     text-decoration: none;
@@ -71,18 +71,26 @@ body li.active>a i {
     color: rgb(30, 255, 255);
 }
 
+.text-color {
+    color: rgb(30, 255, 255);
+}
+
+.bold {
+    font-weight: 500;
+}
+
 h1 {
     font-size: 2.2em;
     font-weight: 500;
     color: rgb(230, 230, 230);
 }
 
-h2 {    
+h2 {
     font-size: 1.2em;
 }
 
 h3 {
-    color: rgb(225, 225, 225);    
+    color: rgb(225, 225, 225);
     font-size: 1.6em;
     font-weight: 500;
 }
@@ -130,8 +138,7 @@ h3 {
 }
 
 /* 3. Header 
------------------------------------------------------- */
-
+-------------------------------------------------------------------------------------------------*/
 .header {
     display: block;
     position: fixed;
@@ -217,7 +224,7 @@ h3 {
 }
 
 /* 4. Sidebar
-------------------------------------------------------*/
+-------------------------------------------------------------------------------------------------*/
 
 .sidebar {
     display: flex;
@@ -246,7 +253,7 @@ h3 {
     overflow-y: auto;
 }
 
-.sidebar .menu>li a i {
+.sidebar .menu>li>a>i {
     font-size: 16px;
     display: inline-block;
     padding-right: 0.8em;
@@ -297,16 +304,41 @@ h3 {
     font-size: 0.9em;
 }
 
-/* 4. Content Area
-------------------------------------------------------*/
-.navbar {
+/* 5. Content Area
+-------------------------------------------------------------------------------------------------*/
+/* .navbar {
     margin-bottom: 0;
     border-radius: 0;
     background-color: rgb(34, 34, 39);
+} */
+
+.right-area {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 90px);
+    margin-left: 280px;
 }
 
-/* 5. Artist
-------------------------------------------------------*/
+.content {
+    padding: 20px 20px 20px 20px;
+    margin-top: 0px;
+    flex-grow: 1;
+}
+
+.breadcrumb,
+.breadcrumb>a {
+    font-size: 0.95em;
+}
+
+.breadcrumb-arrow {
+    font-size: 0.8em;
+    margin-right: 3px;
+    margin-left: 3px;
+    align-self: self-end;
+}
+
+/* 6. Artist
+-------------------------------------------------------------------------------------------------*/
 .imgborder {
     border: 1px solid rgb(34, 34, 39);
     border-radius: 5px;
@@ -374,8 +406,29 @@ h3 {
     text-align: justify;
 }
 
+/* 7. Footer
+-------------------------------------------------------------------------------------------------*/
+.footer-area {
+    background-color: rgb(34, 34, 39);
+    padding: 40px 20px 40px 20px;
+    margin-top: 0px;
+    font-size: 0.9em;
+}
+
+.footer-logo {
+    font-size: 1.2em;
+}
+
+.foot-order1 {
+    order: 1;
+}
+
+.foot-order2 {
+    order: 2;
+}
+
 /* 10. Media Queries
-------------------------------------------------------*/
+-------------------------------------------------------------------------------------------------*/
 @media screen and (min-width: 1129px) {
     .header {
         position: relative;
@@ -393,11 +446,6 @@ h3 {
 
     .header-search-sm {
         display: none;
-    }
-
-    .right-content {
-        padding: 20px 20px 20px 310px;
-        margin-top: 0px;
     }
 }
 

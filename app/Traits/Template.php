@@ -33,6 +33,7 @@ trait Template
                 'url' => env('APP_URL'),
                 'pages' => $data->pages,
                 'subpages' => $data->subpages,
+                'categories' => $data->categories,
                 'template' => $template,
                 'active' => isset($currentURL[3])?$currentURL[3]:'index',
             ];
