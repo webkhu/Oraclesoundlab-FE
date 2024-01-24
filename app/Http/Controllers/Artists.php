@@ -10,7 +10,7 @@ class Artists extends Controller
     use Template;
     public function index()
     {
-        $ch = curl_init(env('API_LINK') . '/api/artist');
+        $ch = curl_init(env('API_LINK') . '/api/artists');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
 
@@ -23,7 +23,7 @@ class Artists extends Controller
         curl_close($ch);
 
         return view('artists', $this->Template(), [
-            'datas' => json_decode($response)->artists,
+            'artists' => json_decode($response)->artists,
             'crumb1' => 'Artists',
         ]);
     }

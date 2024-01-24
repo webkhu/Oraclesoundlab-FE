@@ -1,5 +1,5 @@
 @extends('template.' . $template)
 
 @section('content')
-    @include('asset.artist-catalog')
+    @include('asset.team-catalog')
 @endsection

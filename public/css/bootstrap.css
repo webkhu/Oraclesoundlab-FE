@@ -6176,7 +6176,7 @@ textarea.form-control-lg {
 .carousel-indicators [data-bs-target] {
   box-sizing: content-box;
   flex: 0 1 auto;
-  width: 30px;
+  width: 15px;
   height: 3px;
   padding: 0;
   margin-right: 3px;
@@ -6198,6 +6198,7 @@ textarea.form-control-lg {
 }
 .carousel-indicators .active {
   opacity: 1;
+  width: 30px;
 }
 
 .carousel-caption {

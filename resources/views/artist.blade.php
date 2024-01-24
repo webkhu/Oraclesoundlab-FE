@@ -10,7 +10,7 @@
         </div>
         <div class="artist-detail mb-5">
             <div class="artist-img">
-                <img src="{{ url(env('API_LINK') . '/artists/web/' . $datas->image) }}" alt="{{ $datas->name }}"
+                <img src="{{ url(env('API_LINK') . '/artists/admin/' . $datas->image) }}" alt="{{ $datas->name }}"
                     width="100%">
             </div>
             <div class="artist-desc">{!! $datas->description !!}</div>
