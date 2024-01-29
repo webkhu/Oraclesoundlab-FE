@@ -31,12 +31,24 @@ trait Template
             $currentURL = url()->current();
             $currentURL = explode("/", $currentURL);
 
-            if(@$currentURL[3]){
-                $title = collect($data->pages)->firstWhere('name', $currentURL[3])->title;
+            if ($currentURL[3] === 'page'){
+                $currentURL = $currentURL[4];
+            } else {
+                $currentURL = $currentURL[3];
+            }
+
+            if (@$currentURL) {
+                $title = collect($data->pages)->firstWhere('name', $currentURL)->title;
+                if (collect($title)->isEmpty()) {
+                    $title = collect($data->subpages)->firstWhere('name', $currentURL)->title;
+                    if (collect($title)->isEmpty()) {
+                        $title = '';
+                    }
+                }
             } else {
                 $title = '';
             }
-            
+
             $set_data = [
                 'url' => env('APP_URL'),
                 'title' => $title,
@@ -46,7 +58,7 @@ trait Template
                 'template' => $template,
                 'home_page' => $home_page,
                 'main_page' => $main_page,
-                'active' => isset($currentURL[3]) ? $currentURL[3] : 'index',
+                'active' => isset($currentURL) ? $currentURL : 'index',
             ];
             return $set_data;
         } else {

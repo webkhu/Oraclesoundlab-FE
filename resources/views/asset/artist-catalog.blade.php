@@ -6,12 +6,12 @@
             <h1>Artists</h1>
         </div>
         @if ($active === 'index' || $active === 'home')
-            <div class="col text-end add-menu"><a href="{{ url('/artists/') }}">View more <i
+            <div class="col text-end add-menu"><a href="{{ url('/artists') }}">View more <i
                         class="bi bi-caret-right-fill"></i></a>
             </div>
         @endif
     </div>
-    <div class="row cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4">
+    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
         @foreach ($artists as $artist)
             <div id="imgcontainer" class="col-xl-2" onClick="location.href='{{ url('/artists/' . $artist->slug) }}'">
                 <div class="imgborder">

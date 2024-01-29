@@ -46,7 +46,7 @@
                             <div>{{ $Image->short_desc }}</div>
                             @if ($Image->link)
                                 <div class="mt-4"><button type="button"
-                                        class="btn btn-info btn-carousel">{{ $Image->link_title }}</button></div>
+                                        class="btn btn-on btn-carousel">{{ $Image->link_title }}</button></div>
                             @endif
                         </div>
                     </div>

@@ -37,6 +37,7 @@ body {
     background-color: #16151a;
     width: 100%;
     /* overflow: hidden; */
+    text-align: justify;
 }
 
 img {
@@ -57,6 +58,7 @@ body {
     transition: 0.5s;
     text-decoration: none;
 }
+
 body a,
 body a i {
     color: rgb(180, 180, 180);
@@ -82,8 +84,12 @@ body .active a i {
 }
 
 .text-glow {
-    font-size: 1.1em;
+    /* font-size: 1.1em; */
     transition: color 420ms;
+}
+
+.glow {
+    color: rgb(30, 255, 255);
 }
 
 .bold {
@@ -106,7 +112,8 @@ h3 {
     font-weight: 500;
 }
 
-.add-menu, .add-menu>a {
+.add-menu,
+.add-menu>a {
     font-size: 0.95em;
 }
 
@@ -134,6 +141,40 @@ h3 {
     box-shadow: none;
     color: rgb(180, 180, 180);
 }
+
+.btn-on {
+    font-weight: 400;
+    background-color: rgb(11, 95, 96);
+    border: none;
+    transition: background-color 420ms, border 420ms;
+
+    --bs-btn-hover-color: white;
+    --bs-btn-hover-bg: rgb(19, 159, 159);
+    --bs-btn-hover-border-color: rgb(34, 34, 39);
+    --bs-btn-active-color: white;
+    --bs-btn-hover-bg: rgb(19, 159, 159);
+    --bs-btn-hover-border-color: rgb(34, 34, 39);
+}
+
+.btn-off {
+    font-weight: 400;
+    background-color: rgb(34, 34, 39);
+    pointer-events: none;
+}
+
+.btn>i {
+    color: rgb(180, 180, 180);
+    transition: color 420ms;
+}
+
+.btn:hover>i {
+    color: white;
+}
+
+.btn {
+    padding: 0.2em 0.6em;
+}
+
 
 /* --------------- Scroll Bar --------------- */
 /* width */
@@ -378,26 +419,16 @@ h3 {
     margin: auto 0;
 }
 
-.btn-carousel{
+.btn-carousel {
+    padding: 10px 30px;
     color: white;
-    font-weight: 400;
-    padding-left: 30px;
-    padding-right: 30px;
-    background-color: rgb(11, 95, 96);
-    border: 1px solid rgb(11, 95, 96);
-    transition: background-color 420ms, border 420ms;
-    
-  --bs-btn-hover-color: white;
-  --bs-btn-hover-bg: rgb(19, 159, 159);
-  --bs-btn-hover-border-color: rgb(34, 34, 39);
-  --bs-btn-active-color: white;
-  --bs-btn-active-bg: rgb(22, 191, 191);
-  --bs-btn-active-border-color: rgb(122, 191, 191);
 }
 
 /* 6. Artist
 -------------------------------------------------------------------------------------------------*/
 .imgborder {
+    height: 100%;
+    text-align: left;
     border: 1px solid rgb(34, 34, 39);
     border-radius: 5px;
     box-shadow: 0px 2px 2px -1px rgb(30, 255, 255);
@@ -406,6 +437,7 @@ h3 {
 }
 
 .imggalbox {
+    height: 100%;
     /* border: 10px solid rgb(34, 34, 39, 0); */
     background-color: rgb(34, 34, 39, 0);
     border-radius: 5px;
@@ -433,7 +465,7 @@ h3 {
 
 .imgborder:hover {
     border: 1px solid rgb(30, 255, 255);
-    box-shadow: none;    
+    box-shadow: none;
 }
 
 .imgborder:hover .text-glow {
@@ -466,14 +498,52 @@ h3 {
     text-align: justify;
 }
 
+/* 6. Video Streaming
+-------------------------------------------------------------------------------------------------*/
+.playerArea {
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    /* max-width: 100%; */
+    justify-self: center;
+    margin: auto;
+    /* box-shadow: 0px 2px 2px -1px rgb(30, 255, 255); */
+}
+
+.setPlay {
+    padding-bottom: 56.25%; /* Untuk rasio aspek video 16:9 */
+    position: relative;
+    width: 100%;
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 5px;
+}
+
+.setPlay iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
 /* 7. Footer
 -------------------------------------------------------------------------------------------------*/
 .footer-area {
     background-color: rgb(34, 34, 39);
     padding: 40px;
     margin-top: 0px;
-    font-size: 0.9em;
 }
+
+.footer-area {
+    font-size: 0.94em;
+}
+
+.footer-area a {
+    font-size: 0.90em;
+}
+
 
 .footer-logo {
     font-size: 1.2em;
@@ -491,14 +561,16 @@ h3 {
     text-align: right;
     font-size: 1.3em;
     align-self: center;
+    max-width: 300px;
 }
 
 .copyright {
     text-align: left;
     align-self: center;
+    font-size: 0.93em;
 }
 
-/* 10. Media Queries
+/* 10. Media Size Queries
 -------------------------------------------------------------------------------------------------*/
 @media screen and (min-width: 1200px) {
     .header {
@@ -596,7 +668,7 @@ h3 {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .artist-img {
         max-width: 200px;
         min-width: 200px;
@@ -614,6 +686,7 @@ h3 {
     .socmed,
     .copyright {
         text-align: center;
+        max-width: inherit;
     }
 }
 
@@ -652,4 +725,13 @@ h3 {
         padding-left: 12px;
         padding-right: 12px;
     }
+}
+
+
+/* 11. Pagination Setup
+-------------------------------------------------------------------------------------------------*/
+.paginate {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
 }
