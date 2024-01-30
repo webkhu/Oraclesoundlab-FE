@@ -71,7 +71,7 @@
                             }
                         @endphp
                         <div class="me-2">
-                            <button class="btn btn-sm btn-on {{ $cl }}" type="button"><i
+                            <button class="btn btn-sm btn-on {{ $cl }}" type="button" onclick="location.href='{{ $url }}/{{ Str::lower($page->name) }}'"><i
                                     class="{{ $page->icon }}"></i></button>
                         </div>
                     @endforeach

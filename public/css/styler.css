@@ -88,12 +88,15 @@ body .active a i {
     transition: color 420ms;
 }
 
-.glow {
+/* .glow {
     color: rgb(30, 255, 255);
-}
+} */
 
 .bold {
     font-weight: 500;
+}
+.text-justify {
+    text-align: justify;
 }
 
 h1 {
@@ -142,24 +145,23 @@ h3 {
     color: rgb(180, 180, 180);
 }
 
-.btn-on {
-    font-weight: 400;
-    background-color: rgb(11, 95, 96);
-    border: none;
-    transition: background-color 420ms, border 420ms;
-
-    --bs-btn-hover-color: white;
-    --bs-btn-hover-bg: rgb(19, 159, 159);
-    --bs-btn-hover-border-color: rgb(34, 34, 39);
-    --bs-btn-active-color: white;
-    --bs-btn-hover-bg: rgb(19, 159, 159);
-    --bs-btn-hover-border-color: rgb(34, 34, 39);
+.btn {
+    padding: 0.3em 0.6em;
 }
 
-.btn-off {
+.btn-on {
+    font-size: 0.9em;
     font-weight: 400;
-    background-color: rgb(34, 34, 39);
-    pointer-events: none;
+    background-color: rgb(11, 95, 96);
+    border: solid 0.1em rgb(11, 95, 96);
+    transition: background-color 420ms, border 420ms;
+
+    --bs-btn-hover-color: rgb(225, 225, 225);
+    --bs-btn-hover-bg: rgb(19, 159, 159);
+    --bs-btn-hover-border-color: rgb(34, 34, 39);
+    --bs-btn-active-color: rgb(180, 180, 180);
+    --bs-btn-active-bg: rgb(34, 34, 39);
+    --bs-btn-active-border-color: rgb(180, 180, 180, 0.4);
 }
 
 .btn>i {
@@ -171,10 +173,9 @@ h3 {
     color: white;
 }
 
-.btn {
-    padding: 0.2em 0.6em;
+.active { 
+    pointer-events: none;
 }
-
 
 /* --------------- Scroll Bar --------------- */
 /* width */
@@ -450,17 +451,18 @@ h3 {
 }
 
 .bg-img-wrapper {
-    height: 200px;
+    height: 15em;
     overflow: hidden;
 }
 
 .bg-img {
     width: 100%;
     height: 100%;
-    transition: transform 1s;
     background-size: cover;
-    background-position: center center;
+    background-position:50% 50%;
     border-radius: 5px;
+    transition: transform 1s;
+    transform-origin:top;
 }
 
 .imgborder:hover {
@@ -474,6 +476,7 @@ h3 {
 
 .imgborder:hover .bg-img {
     transform: scale(1.1);
+    transform-origin:top;
 }
 
 .imgborder:hover .imggalbox {

@@ -21,13 +21,6 @@ trait Template
         if ($response) {
             $data = json_decode($response);
 
-            $setup = $data->setting;
-            foreach ($setup as $set) {
-                $template = $set->template;
-                $home_page = $set->home_page;
-                $main_page = $set->main_page;
-            }
-
             $currentURL = url()->current();
             $currentURL = explode("/", $currentURL);
 
@@ -55,9 +48,11 @@ trait Template
                 'pages' => $data->pages,
                 'subpages' => $data->subpages,
                 'categories' => $data->categories,
-                'template' => $template,
-                'home_page' => $home_page,
-                'main_page' => $main_page,
+                'template' => $data->setting->template,
+                'home_page_image' => $data->setting->home_page_image,
+                'home_page_video' => $data->setting->home_page_video,
+                'main_page_image' => $data->setting->main_page_image,
+                'main_page_video' => $data->setting->main_page_video,
                 'active' => isset($currentURL) ? $currentURL : 'index',
             ];
             return $set_data;

@@ -11,20 +11,20 @@
             </div>
         @endif
     </div>
-    <div class="row cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4">
+    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-6">
         @foreach ($teams as $team)
-            <div id="imgcontainer" class="col-xl-2"
+            <div id="imgcontainer" class="col-xl-3"
                 onClick="popup('{{ url(env('API_LINK') . '/teams/web/' . $team->image) }}','<strong>{{ $team->name }}</strong><br>{{ $team->title }}');">
                 <div class="imgborder">
                     <div class="imggalbox">
                         <div class="bg-img-wrapper mb-4">
-                            <div style="background-image:url({{ url(env('API_LINK') . '/teams/admin/' . $team->image) }})"
+                            <div style="background-image:url({{ url(env('API_LINK') . '/teams/admin/' . $team->image) }});"
                                 class="bg-img">
                             </div>
                         </div>
                         <div class="bold text-glow">{{ $team->name }}</div>
-                        <div class="mb-2 "><i>{{ $team->title }}</i></div>
-                        <div>{{ $team->short_desc }}</div>
+                        <div class="mb-2"><i>{{ $team->title }}</i></div>
+                        <div class="text-justify">{{ $team->short_desc }}</div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ use App\Traits\Template;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class Streaming extends Controller
+class AfterMovie extends Controller
 {
     //
     use Template;
@@ -32,7 +32,7 @@ class Streaming extends Controller
         }
 
         // API WEB
-        $ch = curl_init(env('API_LINK') . '/api/streaming');
+        $ch = curl_init(env('API_LINK') . '/api/aftermovie');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
 
@@ -42,7 +42,7 @@ class Streaming extends Controller
         }
         curl_close($ch);
 
-        $stream_set = json_decode($response)->streamings;
+        $stream_set = json_decode($response)->aftermovies;
         $api_key = $stream_set->api_key;
         $playlist_id = $stream_set->playlist_id;
 
@@ -59,7 +59,7 @@ class Streaming extends Controller
         curl_close($ch);
 
         $playList = json_decode($response);
-        $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'streaming')->link);
+        $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'aftermovie')->link);
 
         // Set custom pagination to result set
         $datas =  new LengthAwarePaginator(
@@ -104,6 +104,6 @@ class Streaming extends Controller
 
         $datas->playId = $playId;
 
-        return view('streaming', $this->Template(), compact('setToPlay', 'datas', 'crumb1'));
+        return view('aftermovie', $this->Template(), compact('setToPlay', 'datas', 'crumb1'));
     }
 }

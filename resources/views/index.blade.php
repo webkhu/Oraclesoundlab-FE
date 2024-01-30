@@ -62,7 +62,18 @@
         </div>
         @if (@collect($artists)->isNotEmpty())
             <div class="col-12">
-                @include('asset.artist-catalog')
+                @include('asset.artist-catalog', [
+                    'title' => $page_title->get('artists'),
+                ])
+            </div>
+        @endif
+        @if (@collect($streaming)->isNotEmpty())
+            <div class="col-12">
+                @include('asset.streaming-catalog', [
+                    'datas' => $streaming,
+                    'title' => $page_title->get('streaming'),
+                    'get_page' => 'streaming',
+                ])
             </div>
         @endif
     </div>

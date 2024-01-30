@@ -5,13 +5,13 @@
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li aria-disabled="true">
-                        <span class="btn btn-off"><i class="btn-i bi bi-caret-left"></i></span>
+                        <span class="btn btn-on active"><i class=" bi bi-caret-left"></i></span>
                     </li>
                 @else
                     <li>
                         <a class="btn btn-on"
                             href="{{ $paginator->previousPageUrl() . '&id=' . $paginator->playId . '&setPage=' . $paginator->prevPageToken }}"
-                            rel="prev"><i class="btn-i bi bi-caret-left"></i></a>
+                            rel="prev"><i class=" bi bi-caret-left"></i></a>
                     </li>
                 @endif
 
@@ -20,11 +20,11 @@
                     <li>
                         <a class="btn btn-on"
                             href="{{ $paginator->nextPageUrl() . '&id=' . $paginator->playId . '&setPage=' . $paginator->nextPageToken }}"
-                            rel="next"><i class="btn-i bi bi-caret-right"></i></a>
+                            rel="next"><i class=" bi bi-caret-right"></i></a>
                     </li>
                 @else
                     <li aria-disabled="true">
-                        <span class="btn btn-off"><i class="btn-i bi bi-caret-right"></i></span>
+                        <span class="btn btn-on active"><i class=" bi bi-caret-right"></i></span>
                     </li>
                 @endif
             </ul>
@@ -47,15 +47,15 @@
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <li class="me-3" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                            <span class="btn btn-off" aria-hidden="true"><i
-                                    class="btn-i bi bi-caret-left-fill"></i></span>
+                            <span class="btn btn-on active" aria-hidden="true"><i
+                                    class=" bi bi-caret-left-fill"></i></span>
                         </li>
                     @else
                         <li class="me-3">
                             <a class="btn btn-on"
                                 href="{{ $paginator->previousPageUrl() . '&id=' . $paginator->playId . '&setPage=' . $paginator->prevPageToken }}"
                                 rel="prev" aria-label="@lang('pagination.previous')"><i
-                                    class="btn-i bi bi-caret-left-fill"></i></a>
+                                    class=" bi bi-caret-left-fill"></i></a>
                         </li>
                     @endif
 
@@ -65,12 +65,12 @@
                             <a class="btn btn-on"
                                 href="{{ $paginator->nextPageUrl() . '&id=' . $paginator->playId . '&setPage=' . $paginator->nextPageToken }}"
                                 rel="next" aria-label="@lang('pagination.next')"><i
-                                    class="btn-i bi bi-caret-right-fill"></i></a>
+                                    class=" bi bi-caret-right-fill"></i></a>
                         </li>
                     @else
                         <li aria-disabled="true" aria-label="@lang('pagination.next')">
-                            <span class="btn btn-off" aria-hidden="true"><i
-                                    class="btn-i bi bi-caret-right-fill"></i></span>
+                            <span class="btn btn-on active" aria-hidden="true"><i
+                                    class=" bi bi-caret-right-fill"></i></span>
                         </li>
                     @endif
                 </ul>

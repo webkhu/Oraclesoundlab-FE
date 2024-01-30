@@ -3,7 +3,7 @@
 @else
     <div class="mb-4 row align-items-center">
         <div class="col">
-            <h1>Artists</h1>
+            <h1>{{ $title }}</h1>
         </div>
         @if ($active === 'index' || $active === 'home')
             <div class="col text-end add-menu"><a href="{{ url('/artists') }}">View more <i
@@ -11,7 +11,7 @@
             </div>
         @endif
     </div>
-    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6">
+    <div class="row g-4 g-4 cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-6">
         @foreach ($artists as $artist)
             <div id="imgcontainer" class="col-xl-2" onClick="location.href='{{ url('/artists/' . $artist->slug) }}'">
                 <div class="imgborder">
