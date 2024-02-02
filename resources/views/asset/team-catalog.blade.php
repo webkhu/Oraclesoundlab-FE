@@ -11,9 +11,9 @@
             </div>
         @endif
     </div>
-    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-6">
+    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xxl-4">
         @foreach ($teams as $team)
-            <div id="imgcontainer" class="col-xl-3"
+            <div id="imgcontainer" class="col"
                 onClick="popup('{{ url(env('API_LINK') . '/teams/web/' . $team->image) }}','<strong>{{ $team->name }}</strong><br>{{ $team->title }}');">
                 <div class="imgborder">
                     <div class="imggalbox">

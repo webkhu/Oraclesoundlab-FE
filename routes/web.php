@@ -4,9 +4,11 @@ use App\Http\Controllers\Home;
 use App\Http\Controllers\Team;
 use App\Http\Controllers\Article;
 use App\Http\Controllers\Artists;
+use App\Http\Controllers\Contact;
 use App\Http\Controllers\Streaming;
 use App\Http\Controllers\Additional;
 use App\Http\Controllers\Aftermovie;
+use App\Http\Controllers\Submission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +22,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/aftermovie', [Aftermovie::class, 'index']);
 Route::get('/artists', [Artists::class, 'index']);
 Route::get('/artists/{slug}', [Artists::class, 'artist']);
 Route::get('/article', [Article::class, 'index']);
-Route::get('/aftermovie', [Aftermovie::class, 'index']);
+Route::resource('/contact', Contact::class);
 Route::get('/team', [Team::class, 'index']);
 Route::get('/home', [Home::class, 'index']);
 Route::get('/streaming', [Streaming::class, 'index']);
+Route::resource('/submission', Submission::class);
 Route::get('/', [Home::class, 'index']);
 Route::get('/{page}', [Home::class, 'index']);
 Route::get('/page/{page}', [Additional::class, 'index']);

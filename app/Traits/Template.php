@@ -23,11 +23,14 @@ trait Template
 
             $currentURL = url()->current();
             $currentURL = explode("/", $currentURL);
+            // dd($currentURL);
 
-            if ($currentURL[3] === 'page'){
+            if (@$currentURL[3] === 'page'){
                 $currentURL = $currentURL[4];
-            } else {
+            } else if(@$currentURL[3]) {
                 $currentURL = $currentURL[3];
+            } else {
+                $currentURL = 'home'; 
             }
 
             if (@$currentURL) {

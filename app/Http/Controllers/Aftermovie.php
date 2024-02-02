@@ -6,7 +6,7 @@ use App\Traits\Template;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class AfterMovie extends Controller
+class Aftermovie extends Controller
 {
     //
     use Template;

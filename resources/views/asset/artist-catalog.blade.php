@@ -11,7 +11,10 @@
             </div>
         @endif
     </div>
-    <div class="row g-4 g-4 cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-6">
+    @if ($active != 'index' && $active != 'home')
+        <div class="mb-3">{{ $artists->links('pagination::webkhu') }}</div>
+    @endif
+    <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-6">
         @foreach ($artists as $artist)
             <div id="imgcontainer" class="col-xl-2" onClick="location.href='{{ url('/artists/' . $artist->slug) }}'">
                 <div class="imgborder">
