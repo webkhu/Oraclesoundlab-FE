@@ -42,9 +42,9 @@ class Streaming extends Controller
         }
         curl_close($ch);
 
-        $stream_set = json_decode($response)->streamings;
-        $api_key = $stream_set->api_key;
-        $playlist_id = $stream_set->playlist_id;
+        $stream_set = json_decode($response);
+        $api_key = $stream_set->key->youtube_key;
+        $playlist_id = $stream_set->list->playlist_id;
 
         $list = "https://www.googleapis.com/youtube/v3/playlistItems?key=" . $api_key . "&playlistId=" . $playlist_id . "&part=snippet&maxResults=" . $perPage . "&pageToken=" . $page_token;
 
@@ -61,8 +61,6 @@ class Streaming extends Controller
         $playList = json_decode($response);
         $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'streaming')->link);
 
-        // dd($playList);
-
         // Set custom pagination to result set
         $datas =  new LengthAwarePaginator(
             collect($playList->items)->flatten(),
@@ -71,8 +69,6 @@ class Streaming extends Controller
             $page,
             ['path' => request()->url(), 'pageName' => 'page']
         );
-
-        // dd($datas);
 
         if (@$datas) {
             if (@$playList->nextPageToken) {

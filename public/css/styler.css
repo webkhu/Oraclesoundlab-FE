@@ -202,37 +202,13 @@ body h3 {
     padding: 0.3em 0.6em;
 }
 
-
-
-.btn-on {
-    color: rgb(180, 180, 180);
-    font-size: 0.8em;
-    font-weight: 400;
-    background-color: rgb(11, 95, 96);
-    border: solid 0.1em rgb(11, 95, 96);
-    transition: background-color 420ms, border 420ms;
-
-    --bs-btn-hover-color: rgb(225, 225, 225);
-    --bs-btn-hover-bg: rgb(19, 159, 159);
-    --bs-btn-hover-border-color: rgb(34, 34, 39);
-    --bs-btn-active-color: rgb(180, 180, 180);
-    --bs-btn-active-bg: rgb(34, 34, 39);
-    --bs-btn-active-border-color: rgb(180, 180, 180, 0.4);
-}
-
-.btn-carousel {
-    padding: 0.6em 3em;
-    color: white;
-    font-size: 0.9em;
-}
-
 .btn>i {
     color: rgb(180, 180, 180);
     transition: color 420ms;
 }
 
 .btn:hover>i {
-    color: white;
+    color: rgb(30, 255, 255);
 }
 
 .submit>.btn>i {
@@ -245,6 +221,46 @@ body h3 {
     color: black;
 
 }
+
+.btn-on {
+    color: rgb(180, 180, 180);
+    font-size: 0.8em;
+    font-weight: 400;
+    background-color: rgb(11, 95, 96);
+    border: solid 0.1em rgb(11, 95, 96);
+    transition: background-color 420ms, border 420ms;
+
+    --bs-btn-hover-color: rgb(30, 255, 255);
+    --bs-btn-hover-bg: rgb(34, 34, 39);
+    --bs-btn-hover-border-color: rgb(19, 159, 159);
+    --bs-btn-active-color: rgb(180, 180, 180);
+    --bs-btn-active-bg: rgb(34, 34, 39);
+    --bs-btn-active-border-color: rgb(180, 180, 180, 0.4);
+}
+
+.btn-off {
+    color: rgb(180, 180, 180);
+    font-size: 0.8em;
+    font-weight: 400;
+    background-color: rgb(34, 34, 39);
+    border: solid 0.1em rgb(34, 34, 39);
+    transition: background-color 420ms, border 420ms;
+
+    --bs-btn-hover-color: rgb(30, 255, 255);
+    --bs-btn-hover-bg: rgb(34, 34, 39);
+    --bs-btn-hover-border-color: rgb(19, 159, 159);
+    --bs-btn-active-color: rgb(180, 180, 180);
+    --bs-btn-active-bg: rgb(34, 34, 39);
+    --bs-btn-active-border-color: rgb(180, 180, 180, 0.4);
+}
+
+.btn-carousel {
+    padding: 0.6em 3em;
+    color: white;
+    font-size: 0.9em;
+}
+
+
 
 /* --------------- Scroll Bar --------------- */
 /* width */
@@ -615,8 +631,12 @@ body h3 {
 
 .artist-img {
     flex: 1;
-    max-width: 260px;
-    margin-right: 25px;
+    max-width: 300px;
+    margin-right: 30px;
+}
+
+.album-img {
+    max-width: 400px;
 }
 
 .artist-desc {

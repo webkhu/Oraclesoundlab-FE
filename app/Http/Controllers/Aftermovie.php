@@ -42,9 +42,9 @@ class Aftermovie extends Controller
         }
         curl_close($ch);
 
-        $stream_set = json_decode($response)->aftermovies;
-        $api_key = $stream_set->api_key;
-        $playlist_id = $stream_set->playlist_id;
+        $stream_set = json_decode($response);
+        $api_key = $stream_set->key->youtube_key;
+        $playlist_id = $stream_set->list->playlist_id;
 
         $list = "https://www.googleapis.com/youtube/v3/playlistItems?key=" . $api_key . "&playlistId=" . $playlist_id . "&part=snippet&maxResults=" . $perPage . "&pageToken=" . $page_token;
 

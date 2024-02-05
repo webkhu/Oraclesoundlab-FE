@@ -36,7 +36,7 @@ class Home extends Controller
         $streaming = json_decode($datas_response)->streaming;
 
         if (@$streaming) {
-            $api_key = $streaming->api_key;
+            $api_key = $setting->youtube_key;
             $playlist_id = $streaming->playlist_id;
 
             $list = "https://www.googleapis.com/youtube/v3/playlistItems?key=" . $api_key . "&playlistId=" . $playlist_id . "&part=snippet&maxResults=" . $home_page_video;

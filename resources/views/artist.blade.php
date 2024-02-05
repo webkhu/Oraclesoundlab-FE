@@ -36,5 +36,9 @@
                 @include('asset.modalPopup')
             @endif
         </div>
+        <div class="d-flex mt-4 justify-content-start">
+            <button class="btn btn-off btn-carousel" type="submit" style="border-radius: 5px;"
+                onclick="window.history.back()">Back to {{ $active }}</button>
+        </div>
     @endif
 @endsection
