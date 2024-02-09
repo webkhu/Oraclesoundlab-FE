@@ -34,13 +34,18 @@ class Aftermovie extends Controller
         // API WEB
         $ch = curl_init(env('API_LINK') . '/api/aftermovie');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . base64_encode(env('API_URL_ID') . ' ' . env('API_URL_TOKEN'))));
 
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
             echo 'Error: ' . curl_error($ch);
         }
         curl_close($ch);
+
+        // Check Respose
+        if (@$response === "") {
+            die('No data from server.');
+        }
 
         $stream_set = json_decode($response);
         $api_key = $stream_set->key->youtube_key;
@@ -57,6 +62,11 @@ class Aftermovie extends Controller
             echo 'Error: ' . curl_error($ch);
         }
         curl_close($ch);
+
+        // Check Respose
+        if (@$response === "") {
+            die('No data from server.');
+        }
 
         $playList = json_decode($response);
         $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'aftermovie')->link);
@@ -96,6 +106,12 @@ class Aftermovie extends Controller
                 echo 'Error: ' . curl_error($ch);
             }
             curl_close($ch);
+
+            // Check Respose
+            if (@$response === "") {
+                die('No data from server.');
+            }
+
             $setToPlay = json_decode($response);
             $setToPlay = $setToPlay->items[0];
         } else {

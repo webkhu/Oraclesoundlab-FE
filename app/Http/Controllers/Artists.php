@@ -15,30 +15,36 @@ class Artists extends Controller
         $setting = (object) $this->Template();
         $perPage = $setting->main_page_image;
 
-        $ch = curl_init(env('API_LINK') . '/api/artists?page=' .$page);
+        $ch = curl_init(env('API_LINK') . '/api/artists?page=' . $page);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . base64_encode(env('API_URL_ID') . ' ' . env('API_URL_TOKEN'))));
 
         $response = curl_exec($ch);
 
         if (curl_errno($ch)) {
             echo 'Error: ' . curl_error($ch);
         }
-
         curl_close($ch);
+
+        // Check Respose
+        if (!empty(@$response)) {
+            $list = json_decode($response);
+            $list = $list->artists;
+        }
+
+        if (!empty(@$list)) {
+            // Set custom pagination to result set
+            $datas =  new LengthAwarePaginator(
+                collect($list->data),
+                $list->total,
+                $perPage,
+                $page,
+                ['path' => request()->url(), 'pageName' => 'page']
+            );
+        } else {
+            $datas = null;
+        }
         
-        $list = json_decode($response);
-        $list = $list->artists;
-
-        // Set custom pagination to result set
-        $datas =  new LengthAwarePaginator(
-            collect($list->data),
-            $list->total,
-            $perPage,
-            $page,
-            ['path' => request()->url(), 'pageName' => 'page']
-        );
-
         return view('artists', $this->Template(), [
             'artists' => $datas,
             'crumb1' => 'Artists',
@@ -49,15 +55,19 @@ class Artists extends Controller
     {
         $ch = curl_init(env('API_LINK') . '/api/artist/' . $slug);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . base64_encode(env('API_URL_ID') . ' ' . env('API_URL_TOKEN'))));
 
         $response = curl_exec($ch);
 
         if (curl_errno($ch)) {
             echo 'Error: ' . curl_error($ch);
         }
-
         curl_close($ch);
+
+        // Check Respose
+        if (@$response === "") {
+            die('No data from server.');
+        }
 
         return view('artist', $this->Template(), [
             'datas' => json_decode($response)->artist,

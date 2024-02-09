@@ -117,7 +117,7 @@ body .active a i {
 
 .text-glow {
     /* font-size: 1.1em; */
-    transition: color 420ms;
+    transition: color 350ms;
 }
 
 .text-sm {
@@ -204,7 +204,7 @@ body h3 {
 
 .btn>i {
     color: rgb(180, 180, 180);
-    transition: color 420ms;
+    transition: color 350ms;
 }
 
 .btn:hover>i {
@@ -213,7 +213,7 @@ body h3 {
 
 .submit>.btn>i {
     color: white;
-    transition: color 420ms;
+    transition: color 350ms;
 
 }
 
@@ -228,7 +228,7 @@ body h3 {
     font-weight: 400;
     background-color: rgb(11, 95, 96);
     border: solid 0.1em rgb(11, 95, 96);
-    transition: background-color 420ms, border 420ms;
+    transition: background-color 350ms, border 350ms;
 
     --bs-btn-hover-color: rgb(30, 255, 255);
     --bs-btn-hover-bg: rgb(34, 34, 39);
@@ -244,7 +244,7 @@ body h3 {
     font-weight: 400;
     background-color: rgb(34, 34, 39);
     border: solid 0.1em rgb(34, 34, 39);
-    transition: background-color 420ms, border 420ms;
+    transition: background-color 350ms, border 350ms;
 
     --bs-btn-hover-color: rgb(30, 255, 255);
     --bs-btn-hover-bg: rgb(34, 34, 39);
@@ -434,7 +434,7 @@ body h3 {
     padding-left: 15px;
     border-radius: 6px 0px 0px 6px;
     border: none;
-    transition: background-color 420ms, border 420ms, color 420ms;
+    transition: background-color 350ms, border 350ms, color 350ms;
 
     color: rgb(180, 180, 180);
     background-color: rgb(34, 34, 39);
@@ -450,7 +450,7 @@ body h3 {
 .sidebar .menu-gold i {
     color: rgb(180, 180, 180);
     padding-right: 20px;
-    transition: color 420ms;
+    transition: color 350ms;
 }
 
 .sidebar .menu-gold:hover i {
@@ -496,7 +496,7 @@ body h3 {
 }
 
 .content {
-    padding: 2em;
+    padding: 2em 4em;
     margin-top: 0px;
     flex-grow: 1;
 }
@@ -523,7 +523,7 @@ body h3 {
     width: 100%;
     height: 540px;
     border-radius: 6px;
-    transition: all 1s ease-out;
+    transition: transform 1s ease;
 }
 
 .carousel-item .carousel-caption {
@@ -565,7 +565,7 @@ body h3 {
 
 }
 
-/* 6. Artist
+/* 7. Artist
 -------------------------------------------------------------------------------------------------*/
 .imgborder {
     height: 100%;
@@ -574,7 +574,7 @@ body h3 {
     border-radius: 6px;
     box-shadow: 0px 2px 2px -1px rgb(30, 255, 255);
     cursor: pointer;
-    transition: box-shadow 420ms, border 420ms, color 420ms, box-shadow 420ms;
+    transition: box-shadow 350ms, border 350ms, color 350ms, box-shadow 350ms;
 }
 
 .imggalbox {
@@ -583,7 +583,7 @@ body h3 {
     background-color: rgb(34, 34, 39, 0);
     border-radius: 6px;
     padding: 10px;
-    transition: background-color 420ms;
+    transition: background-color 350ms;
 }
 
 .img-setup {
@@ -645,7 +645,7 @@ body h3 {
     text-align: justify;
 }
 
-/* 6. Video Streaming
+/* 8. Video Streaming
 -------------------------------------------------------------------------------------------------*/
 .playerArea {
     border: 1px solid rgb(80, 80, 80);
@@ -676,11 +676,45 @@ body h3 {
     border-radius: 6px;
 }
 
-/* 7. Footer
+/* 9. Article
+-------------------------------------------------------------------------------------------------*/
+.article-area {
+    border: 1px solid rgb(34, 34, 39);
+    border-radius: 6px;
+    padding: 12px;
+    background-color: rgb(34, 34, 39);
+    height: 100%;
+    cursor: pointer;
+    transition: all 350ms;
+}
+.article-area:hover {
+    background-color: rgb(34, 34, 39, 0.2);
+    border: 1px solid rgb(34, 34, 39);
+}
+
+.article-area:hover .text-glow {
+    color: rgb(30, 255, 255);
+}
+
+/* 10. Partners
+-------------------------------------------------------------------------------------------------*/
+.partners-area {
+    padding: 0 4em;
+    margin-top: 0px;
+}
+
+.partner-item {
+    width: fit-content;
+    height: 60px;
+    border-radius: 6px;
+    transition: transform 1s ease;
+}
+
+/* 11. Footer
 -------------------------------------------------------------------------------------------------*/
 .footer-area {
     background-color: rgb(34, 34, 39);
-    padding: 2em;
+    padding: 2em 4em;
     margin-top: 0px;
 }
 
@@ -714,13 +748,13 @@ body h3 {
     font-size: 0.93em;
 }
 
-/* 10. Media Size Queries
+/* 11. Media Size Queries
 -------------------------------------------------------------------------------------------------*/
 @media screen and (min-width: 1200px) {
     .header {
         position: relative;
-        padding-left: 320px;
-        padding-right: 40px;
+        padding-left: 280px;
+        padding-right: 4em;
     }
 
     .header-nav {
@@ -736,8 +770,16 @@ body h3 {
 @media screen and (max-width: 1200px) {
     .header {
         position: fixed;
-        padding-left: 40px;
-        padding-right: 40px;
+    }
+
+    .header,
+    .partners-area {
+        padding: 0 3em;
+    }
+
+    .content,
+    .footer-area {
+        padding: 2em 3em;
     }
 
     .header-nav {
@@ -804,9 +846,15 @@ body h3 {
 }
 
 @media screen and (max-width: 992px) {
-    .header {
-        padding-left: 30px;
-        padding-right: 30px;
+
+    .header,
+    .partners-area {
+        padding: 0 2em;
+    }
+
+    .content,
+    .footer-area {
+        padding: 2em 2em;
     }
 
     .carousel-item {
@@ -855,14 +903,18 @@ body h3 {
 }
 
 @media screen and (max-width: 576px) {
-    .header {
-        padding-left: 20px;
-        padding-right: 20px;
+
+    .header,
+    .partners-area {
+        padding: 0 1em;
     }
 
-    .content,
+    .content {
+        padding: 2em 1em;
+    }
+
     .footer-area {
-        padding: 1em;
+        padding: 2em;
     }
 
     .carousel-inner {
@@ -910,7 +962,7 @@ body h3 {
 }
 
 
-/* 11. Pagination Setup
+/* 12. Pagination Setup
 -------------------------------------------------------------------------------------------------*/
 .paginate {
     display: flex;

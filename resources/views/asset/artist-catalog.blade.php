@@ -1,16 +1,14 @@
-@if ($artists === '')
-    No data Founded
-@else
-    <div class="mb-4 row align-items-center">
-        <div class="col">
-            <h1>{{ $title }}</h1>
-        </div>
-        @if ($active === 'index' || $active === 'home')
-            <div class="col text-end add-menu"><a href="{{ url('/artists') }}">View more <i
-                        class="bi bi-caret-right-fill"></i></a>
-            </div>
-        @endif
+<div class="mb-4 row align-items-center">
+    <div class="col">
+        <h1>{{ $title }}</h1>
     </div>
+    @if ($active === 'index' || $active === 'home')
+        <div class="col text-end add-menu"><a href="{{ url('/artists') }}">View more <i
+                    class="bi bi-caret-right-fill"></i></a>
+        </div>
+    @endif
+</div>
+@if (!empty(@$artists))
     @if ($active != 'index' && $active != 'home')
         <div class="mb-3">{{ $artists->links('pagination::webkhu') }}</div>
     @endif

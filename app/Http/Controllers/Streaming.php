@@ -34,7 +34,7 @@ class Streaming extends Controller
         // API WEB
         $ch = curl_init(env('API_LINK') . '/api/streaming');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . env('API_URL_ID') . ' ' . env('API_URL_TOKEN')));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . base64_encode(env('API_URL_ID') . ' ' . env('API_URL_TOKEN'))));
 
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
@@ -42,13 +42,16 @@ class Streaming extends Controller
         }
         curl_close($ch);
 
+        if (@$response === "") {
+            die('No data from server.');
+        }
+
         $stream_set = json_decode($response);
         $api_key = $stream_set->key->youtube_key;
         $playlist_id = $stream_set->list->playlist_id;
 
         $list = "https://www.googleapis.com/youtube/v3/playlistItems?key=" . $api_key . "&playlistId=" . $playlist_id . "&part=snippet&maxResults=" . $perPage . "&pageToken=" . $page_token;
 
-        //API Youtube
         $ch = curl_init($list);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -57,6 +60,10 @@ class Streaming extends Controller
             echo 'Error: ' . curl_error($ch);
         }
         curl_close($ch);
+
+        if (@$response === "") {
+            die('No data from server.');
+        }
 
         $playList = json_decode($response);
         $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'streaming')->link);
@@ -94,6 +101,11 @@ class Streaming extends Controller
                 echo 'Error: ' . curl_error($ch);
             }
             curl_close($ch);
+
+            if (@$response === "") {
+                die('No data from server.');
+            }
+
             $setToPlay = json_decode($response);
             $setToPlay = $setToPlay->items[0];
         } else {

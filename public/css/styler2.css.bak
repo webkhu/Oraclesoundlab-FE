@@ -507,7 +507,7 @@ body h3 {
     width: 100%;
     height: 540px;
     border-radius: 6px;
-    transition: all 1s ease-out;
+    transition: transform 1s ease-in-out;
 }
 
 .carousel-item .carousel-caption {

@@ -4,8 +4,8 @@
     @if ($albumDetail === '')
         No data Founded
     @else
-        <h1>{{ $albumDetail->name }}</h1>
-        <h2 class="mb-5">{{ $albumDetail->artists[0]->name }} ({{ $albumDetail->release_date }})</h2>
+        <h1 class="text-start">{{ $albumDetail->name }}</h1>
+        <h2 class="text-start mb-5">{{ $albumDetail->artists[0]->name }} ({{ $albumDetail->release_date }})</h2>
         <div class="row">
             <div class="col artist-img album-img">
                 <img src="{{ $albumDetail->images[0]->url }}" alt="{{ $albumDetail->name }}" width="100%" class="mb-3">

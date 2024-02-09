@@ -4,27 +4,26 @@
     }
 @endphp
 
-@if ($datas === '')
-    No data Founded
-@else
 
-    @if ($active != 'index' && $active != 'home')
-        @if (@$setToPlay)
+@if ($active != 'index' && $active != 'home')
+    @if (@$setToPlay)
+        <div style="width: 90%; margin: auto;">
             <div class="setPlay">{!! $setToPlay->player->embedHtml !!}</div>
             <div class="playerArea mt-3 mb-5 img-setup text-center">{{ $setToPlay->snippet->title }}</div>
-        @endif
-    @endif
-    <div class="mb-4 row align-items-center">
-        <div class="col">
-            <h1>{{ $title }}</h1>
         </div>
-        @if ($active === 'index' || $active === 'home')
-            <div class="col text-end add-menu"><a href="{{ url('/streaming') }}">View more <i
-                        class="bi bi-caret-right-fill"></i></a>
-            </div>
-        @endif
+    @endif
+@endif
+<div class="mb-4 row align-items-center">
+    <div class="col">
+        <h1>{{ $title }}</h1>
     </div>
-
+    @if ($active === 'index' || $active === 'home')
+        <div class="col text-end add-menu"><a href="{{ url('/streaming') }}">View more <i
+                    class="bi bi-caret-right-fill"></i></a>
+        </div>
+    @endif
+</div>
+@if (!empty(@$datas))
     @if ($active != 'index' && $active != 'home')
         @php
             $get_page = $active;

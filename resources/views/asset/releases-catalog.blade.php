@@ -1,16 +1,17 @@
-@if ($releases === null)
-    No data Founded
-@else
-    <div class="mb-4 row align-items-center">
-        <div class="col">
-            <h1>{{ $title }}</h1>
-        </div>
-        @if ($active === 'index' || $active === 'home')
-            <div class="col text-end add-menu"><a href="{{ url('/releases') }}">View more <i
-                        class="bi bi-caret-right-fill"></i></a>
-            </div>
-        @endif
+<div class="mb-4 row align-items-center">
+    <div class="col">
+        <h1>{{ $title }}</h1>
     </div>
+    @if ($active === 'index' || $active === 'home')
+        <div class="col text-end add-menu"><a href="{{ url('/releases') }}">View more <i
+                    class="bi bi-caret-right-fill"></i></a>
+        </div>
+    @endif
+</div>
+@if (!empty(@$releases))
+@if ($active != 'index' && $active != 'home')
+        <div class="mb-3">{{ $albumIds->links('pagination::webkhu') }}</div>
+    @endif
     <div class="row g-4 cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xxl-4">
         @foreach ($releases as $release)
             <div id="imgcontainer" class="col"

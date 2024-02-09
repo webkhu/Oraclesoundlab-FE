@@ -24,7 +24,8 @@
             @include('template.breadcrumb')
             {{-- Page Content --}}
             @yield('content')
-        </div>
+        </div>{{-- Footer Area  --}}
+        @include('template.partner')
         {{-- Footer Area  --}}
         @include('template.footer')
     </div>
