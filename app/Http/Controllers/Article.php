@@ -27,26 +27,26 @@ class Article extends Controller
         curl_close($ch);
 
         // Check Respose
-        if (@$response === "") {
-            die('No data from server.');
+        if (!empty(@$response)) {
+            $list = json_decode($response)->articles;
         }
 
-        $list = json_decode($response);
-        $list = $list->articles;
+        if (!empty(@$list)) {
+            // Set custom pagination to result set
+            $articles =  new LengthAwarePaginator(
+                collect($list->data),
+                $list->total,
+                $perPage,
+                $page,
+                ['path' => request()->url(), 'pageName' => 'page']
+            );
+        } else {
+            $articles = null;
+        }
 
-        // Set custom pagination to result set
-        $datas =  new LengthAwarePaginator(
-            collect($list->data),
-            $list->total,
-            $perPage,
-            $page,
-            ['path' => request()->url(), 'pageName' => 'page']
-        );
+        $crumb1 = collect($this->Template()['pages'])->firstWhere('name', 'article')->link;
 
-        return view('articles', $this->Template(), [
-            'articles' => $datas,
-            'crumb1' => 'Team',
-        ]);
+        return view('articles', $this->Template(), compact('articles', 'crumb1'));
     }
 
     public function article(string $slug)
@@ -63,15 +63,16 @@ class Article extends Controller
         curl_close($ch);
 
         // Check Respose
-        if (@$response === "") {
-            die('No data from server.');
+        if (!empty(@$response)) {
+            $list = json_decode($response);
         }
+        
 
         return view('article', $this->Template(), [
-            'datas' => json_decode($response)->article,
-            'items' => json_decode($response)->galleries,
+            'datas' => $list->article,
+            'items' => $list->galleries,
             'crumb1' => strtoLower(collect($this->Template()['pages'])->firstWhere('name', 'article')->link),
-            'crumb2' => json_decode($response)->article->title,
+            'crumb2' => $list->article->title,
         ]);
     }
 }

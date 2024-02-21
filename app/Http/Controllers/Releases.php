@@ -100,7 +100,7 @@ class Releases extends Controller
         }
 
         return view('releases', $this->Template(), [
-            'crumb1' => strtoLower(collect($this->Template()['pages'])->firstWhere('name', 'releases')->link),
+            'crumb1' => collect($this->Template()['pages'])->firstWhere('name', 'releases')->link,
             'releases' => $releases,
             'albumIds' => $albumIds,
         ]);
@@ -174,7 +174,7 @@ class Releases extends Controller
         }
 
         return view('releases_album', $this->Template(), [
-            'crumb1' => strtoLower(collect($this->Template()['pages'])->firstWhere('name', 'releases')->link),
+            'crumb1' => collect($this->Template()['pages'])->firstWhere('name', 'releases')->link,
             'crumb2' => 'Details',
             'albumDetail' => $albumDetail,
 

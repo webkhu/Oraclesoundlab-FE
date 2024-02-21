@@ -17,7 +17,7 @@
                         @endphp
 
                         <div class="carousel-item {{ $act }}"
-                            style="background: url({{ env('API_LINK') }}/carousel/{{ $Image->image }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                            style="background: url({{ env('API_LINK') }}/img-carousel/{{ $Image->image }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
                             <div class="carousel-caption">
                                 <h1>{{ $Image->title }}</h1>
                                 <div>{{ $Image->short_desc }}</div>
@@ -51,14 +51,14 @@
             <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
             <i class="bi bi-chevron-right"></i>
             </button> --}}
-                <script type="text/javascript">
+                {{-- <script type="text/javascript">
                     $(document).ready(function() {
                         $('.carousel').carousel({
                             interval: 10000, // Waktu perpindahan gambar (ms)
                             pause: true // Jika true, slideshow akan berhenti saat cursor berada di atasnya
                         });
                     });
-                </script>
+                </script> --}}
             </div>
         @endif
         {{-- Release --}}
@@ -77,8 +77,16 @@
                 ])
             </div>
         @endif
-        {{-- Artists --}}
-        @if (!empty(@$artists))
+        {{-- Event --}}
+        @if (!empty(@$events))
+            <div class="col-12 mt-5 mb-3">
+                @include('asset.events-catalog', [
+                    'title' => $page_title->get('events'),
+                ])
+            </div>
+        @endif
+        {{-- Article --}}
+        @if (!empty(@$article))
             <div class="col-12 mt-5 mb-3">
                 @include('asset.article-catalog', [
                     'title' => $page_title->get('article'),

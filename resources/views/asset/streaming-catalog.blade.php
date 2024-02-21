@@ -4,7 +4,6 @@
     }
 @endphp
 
-
 @if ($active != 'index' && $active != 'home')
     @if (@$setToPlay)
         <div style="width: 90%; margin: auto;">
@@ -40,12 +39,12 @@
                     $setURL = url('/' . $get_page) . '?';
                 }
             @endphp
-            <div id="imgcontainer" class="col-xl-3"
+            <div id="img-simple" class="col-xl-3"
                 onClick="location.href='{{ $setURL . 'id=' . $data->snippet->resourceId->videoId }}'">
-                <div class="imgborder">
-                    <div class="imggalbox text-glow">
-                        <div class="bg-img-wrapper mb-3">
-                            <div style="background-image:url({{ $data->snippet->thumbnails->medium->url }});"
+                <div class="simple-border">
+                    <div class="simple-galbox text-glow">
+                        <div class="bg-img-wrapper">
+                            <div style="background-image:url({{ $data->snippet->thumbnails->high->url }});"
                                 class="bg-img">
                             </div>
                         </div>

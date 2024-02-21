@@ -34,21 +34,20 @@ class Artists extends Controller
 
         if (!empty(@$list)) {
             // Set custom pagination to result set
-            $datas =  new LengthAwarePaginator(
-                collect($list->data),
+            $artists =  new LengthAwarePaginator(
+                collect($list->data)->sortBy('name'),
                 $list->total,
                 $perPage,
                 $page,
                 ['path' => request()->url(), 'pageName' => 'page']
             );
         } else {
-            $datas = null;
+            $artists = null;
         }
         
-        return view('artists', $this->Template(), [
-            'artists' => $datas,
-            'crumb1' => 'Artists',
-        ]);
+        $crumb1 = collect($this->Template()['pages'])->firstWhere('name', 'artists')->link;
+        
+        return view('artists', $this->Template(), compact('artists', 'crumb1'));
     }
 
     public function artist(string $slug)
@@ -72,7 +71,7 @@ class Artists extends Controller
         return view('artist', $this->Template(), [
             'datas' => json_decode($response)->artist,
             'items' => json_decode($response)->galleries,
-            'crumb1' => strtoLower(collect($this->Template()['pages'])->firstWhere('name', 'artists')->link),
+            'crumb1' => collect($this->Template()['pages'])->firstWhere('name', 'artists')->link,
             'crumb2' => json_decode($response)->artist->name,
         ]);
     }

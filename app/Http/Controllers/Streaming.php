@@ -66,7 +66,7 @@ class Streaming extends Controller
         }
 
         $playList = json_decode($response);
-        $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'streaming')->link);
+        $crumb1 = collect($setting->pages)->firstWhere('name', 'streaming')->link;
 
         // Set custom pagination to result set
         $datas =  new LengthAwarePaginator(

@@ -5,11 +5,7 @@
             <div class="header-box header-box-sm">
                 <img class="header-logo" src="{{ $url }}/template/oraclesoundlab_logo.gif">
             </div>
-            <div class="submit">
-                {{-- <button class="btn btn-warning bold" id="music-submit" onclick="location.href='{{ $url }}/submission'">Send Demo<i
-                        class="bi bi-music-note-beamed ms-2"></i><i class="bi bi-caret-right-fill ms-4"></i></button> --}}
-            </div>
-
+            <div class="submit"></div>
             <div class="header-box header-box-bg">
                 {{-- Text Menu --}}
                 @foreach (collect($pages)->where('position', 'Header') as $page)
@@ -32,19 +28,23 @@
                 @endforeach
 
                 {{-- Search Bar --}}
-                <form class="ms-4">
+                <form action="{{ url('search') }}" method="POST" enctype="multipart/form-data">
+                    @method('post')
+                    @csrf
                     <div class="input-group input-group-sm search">
-                        <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                            aria-describedby="button-addon2">
-                        <button class="btn btn-on" type="button"><i class="bi bi-search"></i></button>
+                        <input type="text" id="search" name="search" class="form-control" placeholder="Search" aria-label="Search"
+                            aria-describedby="button-addon2" autocomplete="off">
+                        <button class="btn btn-on" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
             </div>
-            <form class="header-box header-search-sm" id="search-sm">
+            <form class="header-box header-search-sm" id="search-sm" action="{{ url('search') }}" method="POST" enctype="multipart/form-data">
+                @method('post')
+                @csrf
                 <div class="input-group input-group-sm search-sm">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                    <input type="text" name="search" class="form-control" placeholder="Search" aria-label="Search"
                         aria-describedby="button-addon2">
-                    <button class="btn btn-on" type="button"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-on" type="submit"><i class="bi bi-search"></i></button>
                 </div>
                 <div class="ms-2">
                     <button class="btn btn-sm btn-outline-secondary" type="button" onclick="openSearch()"><i

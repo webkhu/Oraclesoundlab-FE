@@ -69,7 +69,7 @@ class Aftermovie extends Controller
         }
 
         $playList = json_decode($response);
-        $crumb1 = strtoLower(collect($setting->pages)->firstWhere('name', 'aftermovie')->link);
+        $crumb1 = collect($setting->pages)->firstWhere('name', 'aftermovie')->link;
 
         // Set custom pagination to result set
         $datas =  new LengthAwarePaginator(

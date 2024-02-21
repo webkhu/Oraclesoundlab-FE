@@ -12,9 +12,8 @@
                     <div class="row">
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold"
-                                for="submission_type @error('submission_type') is-invalid @enderror" id="submission_type"
-                                placeholder="submission_type">Submission Type</label>
-                            <select name="type" class="form-control" required>
+                                for="type">Submission Type</label>
+                            <select id="type" name="type" class="form-control" required>
                                 <option value="" disabled selected hidden>Please select</option>
                                 <option value="Single">Single Album ( 1 - 3 tracks )</option>
                                 <option value="EP">EP Album ( 4 - 6 tracks )</option>
@@ -29,7 +28,7 @@
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold" for="email">Email</label>
                             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-                                id="email" placeholder="" required value="{{ old('email') }}">
+                                id="email" placeholder="" required value="{{ old('email') }}" autocomplete="off">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -41,7 +40,7 @@
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold" for="name">Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                id="name" placeholder="" required value="{{ old('name') }}">
+                                id="name" placeholder="" required value="{{ old('name') }}" autocomplete="off">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -52,7 +51,7 @@
                             <label class="form-label bold" for="artist_name">Artist Name</label>
                             <input type="text" name="artist_name"
                                 class="form-control @error('artist_name') is-invalid @enderror" id="artist_name"
-                                placeholder="" required value="{{ old('artist_name') }}">
+                                placeholder="" required value="{{ old('artist_name') }}" autocomplete="off">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -64,7 +63,7 @@
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold" for="main_social_media">Main Social Media</label>
                             <input type="text" name="main_social_media" class="form-control @error('main_social_media') is-invalid @enderror"
-                                id="main_social_media" placeholder="Social media link" required value="{{ old('main_social_media') }}">
+                                id="main_social_media" placeholder="Social media link" required value="{{ old('main_social_media') }}" autocomplete="off">
                             @error('main_social_media')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -75,7 +74,7 @@
                             <label class="form-label bold" for="music_link">Music Link *</label>
                             <input type="text" name="music_link"
                                 class="form-control @error('music_link') is-invalid @enderror" id="music_link"
-                                placeholder="drive.google.com/your_file" required value="{{ old('music_link') }}">
+                                placeholder="drive.google.com/your_file" required value="{{ old('music_link') }}" autocomplete="off">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}

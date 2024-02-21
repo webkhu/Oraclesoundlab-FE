@@ -21,7 +21,7 @@
                     <div class="imgborder">
                         <div class="imggalbox">
                             <div class="bg-img-wrapper mb-4">
-                                <div style="background-image:url({{ url(env('API_LINK') . '/article/admin/' . $article->image) }})"
+                                <div style="background-image:url({{ url(env('API_LINK') . '/img-article/admin/' . $article->image) }})"
                                     class="bg-img"></div>
                             </div>
                             <div class="img-setup">

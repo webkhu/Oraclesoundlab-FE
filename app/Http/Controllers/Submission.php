@@ -32,7 +32,7 @@ class Submission extends Controller
         }
 
         return view('submission', $this->Template(), [
-            'crumb1' => strtoLower(collect($this->Template()['pages'])->firstWhere('name', 'submission')->link),
+            'crumb1' => collect($this->Template()['pages'])->firstWhere('name', 'submission')->link,
         ]);
     }
 
@@ -68,11 +68,14 @@ class Submission extends Controller
 
                 $mail = new PHPMailer(true);
                 $mail->isSMTP();
-                $mail->Host       = 'localhost';
-                $mail->SMTPAuth   = false;
-                $mail->Username   = env('MAIL_USERNAME');
-                $mail->Password   = env('MAIL_PASSWORD');
-                $mail->Port       = env('MAIL_PORT');
+                $mail->Host          = env('MAIL_HOST');
+                $mail->SMTPAuth      = false;
+                $mail->Username      = env('MAIL_USERNAME');
+                $mail->Password      = env('MAIL_PASSWORD');
+                $mail->Port          = env('MAIL_PORT');
+                $mail->SMTPSecure    = 'ssl';
+                $mail->Timeout       = 60; 
+                $mail->SMTPKeepAlive = true;
                 $mail->setFrom($_POST['email'], $_POST['name']);
                 $mail->AddAddress(env('MAIL_FROM_ADDRESS'));
                 $mail->isHTML(true);

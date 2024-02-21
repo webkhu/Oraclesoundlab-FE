@@ -5,7 +5,7 @@
         No data Founded
     @else
         <div style="width: 90%; margin: auto;">
-            <img class="mb-5" src="{{ url(env('API_LINK') . '/article/admin/' . $datas->image) }}" alt="{{ $datas->title }}"
+            <img class="mb-5" src="{{ url(env('API_LINK') . '/img-article/web/' . $datas->image) }}" alt="{{ $datas->title }}"
                 width="100%">
             <div class="mb-4">
                 <h1 class="text-start">{{ $datas->title }}</h1>
@@ -19,9 +19,9 @@
                             <div class="imgborder">
                                 <div class="imggalbox">
                                     <div class="bg-img-wrapper mb-4">
-                                        <div style="background-image:url({{ url(env('API_LINK') . '/article/gallery/' . $item->image) }})"
+                                        <div style="background-image:url({{ url(env('API_LINK') . '/img-article/gallery/' . $item->image) }})"
                                             class="bg-img"
-                                            onClick="popup('{{ url(env('API_LINK') . '/article/gallery/' . $item->image) }}','{{ $item->title }}');">
+                                            onClick="popup('{{ url(env('API_LINK') . '/img-article/gallery/' . $item->image) }}','{{ $item->title }}');">
                                         </div>
                                     </div>
                                     <div class="img-setup">

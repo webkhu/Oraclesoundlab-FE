@@ -13,7 +13,7 @@
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold" for="name">Name</label>
                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                                id="name" placeholder="" required value="{{ old('name') }}">
+                                id="name" placeholder="" required value="{{ old('name') }}" autocomplete="off">
                             @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -23,7 +23,7 @@
                         <div class="col-12 col-md-6 mb-3">
                             <label class="form-label bold" for="email">Email</label>
                             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-                                id="email" placeholder="" required value="{{ old('email') }}">
+                                id="email" placeholder="" required value="{{ old('email') }}" autocomplete="off">
                             @error('email')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -34,7 +34,7 @@
                     <div class="mb-3">
                         <label class="form-label bold" for="subject">Subject</label>
                         <input type="text" name="subject" class="form-control @error('subject') is-invalid @enderror"
-                            id="subject" placeholder="" required value="{{ old('subject') }}">
+                            id="subject" placeholder="" required value="{{ old('subject') }}" autocomplete="off">
                         @error('subject')
                             <div class="invalid-feedback">
                                 {{ $message }}

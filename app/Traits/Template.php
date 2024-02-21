@@ -34,7 +34,7 @@ trait Template
             $currentURL = 'home';
         }
 
-        if (@$currentURL) {
+        if (@$currentURL && @$currentURL != 'search') {
             $title = collect($data->pages)->firstWhere('name', $currentURL)->title;
             if (collect($title)->isEmpty()) {
                 $title = collect($data->subpages)->firstWhere('name', $currentURL)->title;
@@ -42,6 +42,8 @@ trait Template
                     $title = '';
                 }
             }
+        } elseif (@$currentURL === 'search') {
+            $title = 'Search Data';
         } else {
             $title = '';
         }

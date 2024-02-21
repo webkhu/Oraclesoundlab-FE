@@ -17,11 +17,12 @@ class Home extends Controller
         $streaming = null;
         $release = null;
         $releases = null;
+        $events = null;
 
         // Carousel
         $carousel = curl_init(env('API_LINK') . '/api/carousel');
-        curl_setopt($carousel, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($carousel, CURLOPT_HTTPHEADER, array('Authorization: ' . base64_encode(env('API_URL_ID') . ' ' . env('API_URL_TOKEN'))));
+        curl_setopt($carousel, CURLOPT_RETURNTRANSFER, true);
         $carousel_response = curl_exec($carousel);
         if (curl_errno($carousel)) {
             echo 'Error: ' . curl_error($carousel);
@@ -50,6 +51,7 @@ class Home extends Controller
             $article = json_decode($datas_response)->article;
             $streaming = json_decode($datas_response)->streaming;
             $release = json_decode($datas_response)->release;
+            $events = collect(json_decode($datas_response)->events)->sortByDesc('date');
         }
 
         // Get youtube Data
@@ -124,6 +126,6 @@ class Home extends Controller
             }
         }
 
-        return view('index', $this->Template(), compact('carousel', 'page_title', 'artists', 'article', 'streaming', 'releases'));
+        return view('index', $this->Template(), compact('carousel', 'page_title', 'artists', 'article', 'streaming', 'releases', 'events'));
     }
 }

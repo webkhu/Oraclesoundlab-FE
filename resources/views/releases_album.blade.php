@@ -53,10 +53,10 @@
         </div>
         <div class="d-flex mt-4 justify-content-between">
             <button class="btn btn-off btn-carousel" type="submit" style="border-radius: 5px;"
-                onclick="window.history.back()">Back to {{ $active }}</button>
+                onclick="window.history.back()"><i class="bi bi-caret-left-fill text-sm"></i> Back to {{ $active }}</button>
             <button class="btn btn-on btn-carousel" type="submit" style="border-radius: 5px;"
                 onclick="window.open('{{ $albumDetail->external_urls->spotify }}', '_blank')">Listen at
-                Spotify</button>
+                Spotify <i class="bi bi-caret-right-fill text-sm"></i></button>
         </div>
     @endif
     <script>
